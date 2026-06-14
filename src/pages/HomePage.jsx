@@ -1,7 +1,5 @@
 import { lazy, Suspense } from 'react'
 import Hero from '../components/Hero'
-import { Analytics } from "@vercel/analytics/next";
-Analytics()
 
 
 const Services = lazy(() => import('../components/Services'))
