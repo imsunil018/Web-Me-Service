@@ -1,17 +1,43 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export default function BackToTop() {
   const [visible, setVisible] = useState(false)
+  const visibleRef = useRef(false)
 
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 400)
+    let ticking = false
+
+    const onScroll = () => {
+      if (ticking) return
+      ticking = true
+      requestAnimationFrame(() => {
+        const nextVisible = window.scrollY > 400
+        if (nextVisible !== visibleRef.current) {
+          visibleRef.current = nextVisible
+          setVisible(nextVisible)
+        }
+        ticking = false
+      })
+    }
+
     window.addEventListener('scroll', onScroll, { passive: true })
     onScroll()
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    const root = document.documentElement
+    const useSmooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    if (useSmooth) {
+      root.dataset.hashScroll = 'smooth'
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      window.setTimeout(() => {
+        delete root.dataset.hashScroll
+      }, 900)
+    } else {
+      window.scrollTo({ top: 0, behavior: 'auto' })
+    }
   }
 
   return (

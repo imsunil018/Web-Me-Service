@@ -1,136 +1,157 @@
 import { useState } from 'react'
 import AnimateOnScroll from './AnimateOnScroll'
-import { SITE } from '../data/site'
-
-const faqs = [
-  {
-    q: 'What services does WebMeService offer?',
-    a: 'We offer smart contract development, blockchain solutions, web development, graphic design (Photoshop/Illustrator), UI/UX design, mobile apps, SEO, and cloud hosting — all under one roof.',
-  },
-  {
-    q: 'How long does a typical web project take?',
-    a: 'A standard 5-page website takes 7–10 days. Custom web apps and blockchain projects vary from 2–8 weeks depending on complexity. We provide a clear timeline before starting.',
-  },
-  {
-    q: 'Do you audit smart contracts before deployment?',
-    a: 'Yes. Every smart contract goes through internal review and we recommend third-party audits for DeFi and high-value contracts. Security is our top priority.',
-  },
-  {
-    q: 'Can I hire you for just graphic design?',
-    a: 'Absolutely! We create logos, brand kits, social media creatives, banners, and print designs using Photoshop, Illustrator, and Figma — standalone or bundled with web projects.',
-  },
-  {
-    q: 'What are your payment terms?',
-    a: 'We work with 50% upfront and 50% on delivery for most projects. Enterprise and blockchain projects may have milestone-based payments. All terms are discussed before kickoff.',
-  },
-  {
-    q: 'How do I get started?',
-    a: `Fill out the contact form or email us at ${SITE.email}. We'll schedule a free consultation and send a detailed quote within 24 hours.`,
-  },
-]
+import RevealGroup from './RevealGroup'
+import NavHashLink from './NavHashLink'
+import SectionHeader from './SectionHeader'
+import { SITE, HOME_FAQS, SECTION_COPY } from '../data/site'
+import { CONTACT_HREF } from '../data/routes'
 
 const supportChannels = [
   {
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
-      </svg>
-    ),
-    title: 'WhatsApp Chat',
-    desc: 'Message us directly on WhatsApp for quick answers. We reply within 1 hour during business hours.',
-    action: 'Chat on WhatsApp',
-    href: `https://wa.me/919876543210?text=Hi%20WebMeService,%20I%20need%20help%20with%20a%20project`,
-    external: true,
-  },
-  {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
         <path d="M22 6l-10 7L2 6" />
       </svg>
     ),
     title: 'Email Support',
-    desc: 'Send detailed project requirements and get a comprehensive response within 24 hours.',
-    action: 'Send Email',
+    desc: 'Send your brief, files, or questions to our project inbox. We respond within one business day.',
+    action: 'Email Us',
     href: `mailto:${SITE.email}`,
     external: false,
   },
   {
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
         <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
       </svg>
     ),
-    title: 'Free Consultation',
-    desc: 'Book a free 30-minute call to discuss your blockchain, web, or design project requirements.',
-    action: 'Book Now',
-    href: '#contact',
-    external: false,
+    title: 'Project Consultation',
+    desc: 'Share goals, budget range, and timeline through the contact form for a scoped recommendation.',
+    action: 'Start a Request',
+    href: CONTACT_HREF,
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 6v6l4 2" />
+      </svg>
+    ),
+    title: 'Business Hours',
+    desc: SITE.businessHours,
+    action: 'View Contact',
+    href: CONTACT_HREF,
   },
 ]
 
 export default function Support() {
-  const [openIndex, setOpenIndex] = useState(0)
+  const [openIndex, setOpenIndex] = useState(-1)
+
+  const toggleFaq = (index) => {
+    setOpenIndex((current) => (current === index ? -1 : index))
+  }
 
   return (
-    <section className="support section" id="support">
+    <section className="section section--surface" id="support" aria-labelledby="support-title">
       <div className="section__glow section__glow--right" />
       <div className="container">
-        <AnimateOnScroll>
-          <div className="section__header">
-            <span className="section__label">Support</span>
-            <h2 className="section__title">We&apos;re here to help</h2>
-            <p className="section__desc">
-              Questions about smart contracts, web development, or design? Reach us anytime — we&apos;re always ready to assist.
-            </p>
-          </div>
-        </AnimateOnScroll>
+        <SectionHeader
+          label={SECTION_COPY.support.label}
+          title={SECTION_COPY.support.title}
+          desc={SECTION_COPY.support.desc}
+          titleId="support-title"
+        />
 
-        <div className="support__channels">
-          {supportChannels.map((channel, i) => (
-            <AnimateOnScroll key={channel.title} as="article" className="support-channel" delay={i * 100}>
+        <RevealGroup className="support__channels" stagger={85}>
+          {supportChannels.map((channel) => (
+            <article key={channel.title} className="support-channel hover-card">
               <div className="support-channel__icon">{channel.icon}</div>
               <h3>{channel.title}</h3>
               <p>{channel.desc}</p>
-              <a
-                href={channel.href}
-                className="support-channel__link"
-                {...(channel.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-              >
-                {channel.action}
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </a>
-            </AnimateOnScroll>
+              {channel.href === CONTACT_HREF ? (
+                <NavHashLink href={channel.href} className="support-channel__link link-pill">
+                  {channel.action}
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </NavHashLink>
+              ) : (
+                <a
+                  href={channel.href}
+                  className="support-channel__link link-pill"
+                  {...(channel.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                >
+                  {channel.action}
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </a>
+              )}
+            </article>
           ))}
-        </div>
+        </RevealGroup>
 
-        <AnimateOnScroll delay={200}>
-          <div className="support__faq">
-            <h3 className="support__faq-title">Frequently Asked Questions</h3>
-            <div className="faq-list">
-              {faqs.map((faq, i) => (
-                <div key={faq.q} className={`faq-item ${openIndex === i ? 'faq-item--open' : ''}`}>
+        <div className="faq-section" id="faq" aria-labelledby="faq-title">
+          <AnimateOnScroll direction="up" className="faq-section__intro">
+            <span className="section__label">{SECTION_COPY.faq.label}</span>
+            <h2 className="faq-section__title" id="faq-title">
+              {SECTION_COPY.faq.title}
+            </h2>
+            <p className="faq-section__desc">{SECTION_COPY.faq.desc}</p>
+            <ul className="faq-section__highlights">
+              <li>Website cost & timelines explained upfront</li>
+              <li>Web, mobile, blockchain & UI/UX services</li>
+              <li>Support, maintenance & project process</li>
+            </ul>
+            <NavHashLink href={CONTACT_HREF} className="faq-section__cta link-pill">
+              Still have questions?
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </NavHashLink>
+          </AnimateOnScroll>
+
+          <RevealGroup className="faq-panel" stagger={48} mode="each">
+            {HOME_FAQS.map((faq, i) => {
+              const isOpen = openIndex === i
+
+              return (
+                <div key={faq.q} className={`faq-panel__item${isOpen ? ' faq-panel__item--open' : ''}`}>
                   <button
                     type="button"
-                    className="faq-item__question"
-                    onClick={() => setOpenIndex(openIndex === i ? -1 : i)}
-                    aria-expanded={openIndex === i}
+                    className="faq-panel__trigger"
+                    onClick={() => toggleFaq(i)}
+                    aria-expanded={isOpen}
+                    aria-controls={`faq-answer-${i}`}
+                    id={`faq-question-${i}`}
                   >
-                    {faq.q}
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M6 9l6 6 6-6" />
-                    </svg>
+                    <span className="faq-panel__question">{faq.q}</span>
+                    <span className="faq-panel__toggle" aria-hidden="true">
+                      <svg className="faq-panel__icon faq-panel__icon--plus" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M12 5v14M5 12h14" />
+                      </svg>
+                      <svg className="faq-panel__icon faq-panel__icon--minus" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M5 12h14" />
+                      </svg>
+                    </span>
                   </button>
-                  <div className="faq-item__answer">
-                    <p>{faq.a}</p>
+                  <div
+                    id={`faq-answer-${i}`}
+                    className="faq-panel__body"
+                    role="region"
+                    aria-labelledby={`faq-question-${i}`}
+                    aria-hidden={!isOpen}
+                  >
+                    <div className="faq-panel__body-inner">
+                      <p>{faq.a}</p>
+                    </div>
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
-        </AnimateOnScroll>
+              )
+            })}
+          </RevealGroup>
+        </div>
       </div>
     </section>
   )

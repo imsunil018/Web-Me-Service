@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="WebMeService — Software Development Company in India">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0c0e"/>
+      <stop offset="100%" stop-color="#0f1512"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect x="48" y="48" width="1104" height="534" rx="28" fill="none" stroke="#34d399" stroke-opacity="0.14" stroke-width="2"/>
+  <rect x="88" y="120" width="72" height="72" rx="14" fill="url(#accent)"/>
+  <text x="124" y="168" text-anchor="middle" fill="#fff" font-family="system-ui, sans-serif" font-size="36" font-weight="800">W</text>
+  <text x="188" y="158" fill="#f0f2f5" font-family="system-ui, sans-serif" font-size="52" font-weight="800">WebMe</text>
+  <text x="188" y="158" dx="198" fill="#34d399" font-family="system-ui, sans-serif" font-size="52" font-weight="800">Service</text>
+  <text x="88" y="248" fill="#b4b9c4" font-family="system-ui, sans-serif" font-size="30" font-weight="600">Software Development Company · India</text>
+  <text x="88" y="310" fill="#7a8290" font-family="system-ui, sans-serif" font-size="24">Web Development · Smart Contracts · Blockchain · Mobile Apps · UI/UX</text>
+  <rect x="88" y="360" width="320" height="56" rx="12" fill="url(#accent)"/>
+  <text x="248" y="396" text-anchor="middle" fill="#fff" font-family="system-ui, sans-serif" font-size="22" font-weight="700">webmeservice.in</text>
+</svg>

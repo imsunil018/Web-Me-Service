@@ -1,56 +1,92 @@
 <!doctype html>
-<html lang="en-IN">
+<html lang="en-IN" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <title>WebMeService — Smart Contract, Blockchain, Web Development & Graphic Design</title>
+    <title>WebMeService | Software Development Company India</title>
     <meta
       name="description"
-      content="WebMeService.in offers smart contract development, blockchain solutions, web development, graphic design, UI/UX, mobile apps, SEO & cloud hosting. Get a free quote today."
+      content="Software development company in India — custom web, mobile, blockchain, smart contracts, Web3, and UI/UX design. WebMeService replies with a free quote within 24 hours."
     />
+    <link rel="alternate" hreflang="en-IN" href="https://webmeservice.in/" />
+    <link rel="alternate" hreflang="x-default" href="https://webmeservice.in/" />
     <meta
       name="keywords"
-      content="webmeservice, smart contract development, blockchain solutions, web development india, graphic design, photoshop design, UI UX design, mobile app development, SEO services, cloud hosting, webmeservice.in"
+      content="software development company, custom software development, web development services, mobile app development, smart contract development, blockchain development company, web3 development services, ui ux design services, saas development company, software agency india, web development company india"
     />
     <meta name="author" content="WebMeService" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="googlebot" content="index, follow" />
+    <meta name="geo.region" content="IN" />
+    <meta name="geo.placename" content="India" />
     <link rel="canonical" href="https://webmeservice.in/" />
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://webmeservice.in/" />
     <meta property="og:site_name" content="WebMeService" />
-    <meta property="og:title" content="WebMeService — Smart Contract, Blockchain, Web Dev & Design" />
+    <meta property="og:title" content="Software Development Company India | Web, Blockchain &amp; Mobile | WebMeService" />
     <meta
       property="og:description"
-      content="Premium digital services — smart contracts, blockchain, web development, graphic design, mobile apps & more at webmeservice.in"
+      content="Custom web development, smart contracts, blockchain solutions, mobile apps, and UI/UX design from an India-based software development company."
     />
     <meta property="og:locale" content="en_IN" />
+    <meta property="og:image" content="https://webmeservice.in/og-image.svg" />
+    <meta property="og:image:alt" content="WebMeService — software development company in India" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="WebMeService — Smart Contract, Blockchain, Web Dev & Design" />
+    <meta name="twitter:site" content="@webmeservice" />
+    <meta name="twitter:title" content="Software Development Company India | WebMeService" />
     <meta
       name="twitter:description"
-      content="Premium digital services — smart contracts, blockchain, web development, graphic design & more."
+      content="Custom software development, web development, blockchain, smart contracts, and mobile apps from India."
     />
+    <meta name="twitter:image" content="https://webmeservice.in/og-image.svg" />
+    <meta name="twitter:image:alt" content="WebMeService — software development company in India" />
 
-    <meta name="theme-color" content="#0a0e0c" media="(prefers-color-scheme: dark)" />
-    <meta name="theme-color" content="#f6f9f7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0b0c0e" />
+    <meta name="application-name" content="WebMeService" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
 
     <script>
       (function () {
         var t = localStorage.getItem('webmeservice-theme');
-        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+        document.documentElement.setAttribute('data-theme', t === 'light' || t === 'dark' ? t : 'dark');
+      })();
+    </script>
+    <script>
+      (function () {
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        var path = window.location.pathname;
+        if (path !== '/' && path !== '') return;
+        var nav = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+        if (nav && nav.type === 'reload') {
+          if (window.location.hash) {
+            history.replaceState(null, '', path + window.location.search);
+          }
+          window.scrollTo(0, 0);
+        } else if (!window.location.hash) {
+          window.scrollTo(0, 0);
+        }
       })();
     </script>
   </head>
