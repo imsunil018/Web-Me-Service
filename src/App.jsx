@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { Analytics } from '@vercel/analytics/react'
 import { ThemeProvider } from './context/ThemeContext'
 import { LEGAL_SECTIONS, ROUTES, SERVICE_ROUTE } from './data/routes'
 import Seo from './components/Seo'
@@ -70,6 +71,7 @@ function App() {
         </main>
         <Footer />
         <BackToTop />
+        <Analytics />
       </BrowserRouter>
     </ThemeProvider>
   )
